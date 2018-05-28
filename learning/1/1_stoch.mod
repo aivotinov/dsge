@@ -11,7 +11,7 @@ y = k(-1)^(alpha)*(exp(z)* n)^(1-alpha);
 i = k-(1-delta)*k(-1);
 z = rho * z(-1) + e_a;
 tau = tauHat + e_tau;
-w = (1-alpha) * k(-1)^(alpha) * (exp(z)*n)^(1-alpha);
+w = (1-alpha) * k(-1)^(alpha) * (exp(z))^(1-alpha) * n^(-alphas);
 end;
 
 alpha   = 0.4;
