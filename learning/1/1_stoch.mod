@@ -27,7 +27,7 @@ omegaSS = (phiSS)^(1-alpha)-delta;
 muSS = (1-alpha)/(theta*(1-tauHat))*phiSS^(-alpha);
 
 initval;
-  k = muSS/(omegaSS + muSS + phiSS);
+  k = muSS/(omegaSS + muSS * phiSS);
   c = omegaSS * k;
   n = phiSS * k;
   z = 0;

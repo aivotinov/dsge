@@ -1,0 +1,237 @@
+\documentclass[12pt]{extreport}
+\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+
+\usepackage{amsmath}
+ \linespread{1.0}
+\renewcommand{\thesection}{\thepart \arabic{section}}
+
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{makecell}
+\usepackage{subcaption}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\graphicspath{{gr/}{results/}{/}}  
+\usepackage[left = 3 cm]{geometry}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{natbib}
+
+\bibliographystyle{rusnat}
+\setcitestyle{authoryear, open = {(}, close = {))},aysep{,}}
+
+\begin{document}
+
+\section{Households}
+	Problem:
+		\begin{equation}
+			\left\{
+			\begin{array}{l}
+			U = \sum_t \beta^t \left\{   \log \left( c_t \right) + \theta  \log \left( 1 - n_t \right)  \right\} \\
+			c_t  + b_{t+1} = (r_t +1)b_t + (1-\tau^w_t) w_t n_t + f_t + g_t
+			\end{array}
+			\right.
+		\end{equation}
+		
+	Lagrangian:
+		\begin{equation}
+			\mathcal{L} = \sum_t \beta^t \left\{   \log \left( c_t \right) + \theta  \log \left( 1 - n_t \right)  \right\} + 
+			\lambda_t \left[ (r_t +1)b_t + (1-\tau^w_t) w_t n_t + f_t + g_t - c_t  - b_{t+1}  \right]
+		\end{equation}
+		
+	Derivatives:
+		\begin{equation}
+		\mathcal{L}'_{c_t} =  \frac{1}{c_t} - \lambda_t 
+		\end{equation}
+		
+		\begin{equation}
+		\mathcal{L}'_{b_{t+1}} = - \lambda_t  - \beta (r_{t+1} +1) \lambda_{t+1}
+		\end{equation}
+		
+		\begin{equation}
+		\mathcal{L}'_{n_t} =  \theta \frac{-1}{1-n_t} + \lambda_t (1-\tau^w_t) w_t
+		\end{equation}
+		
+	FOC:
+	
+		Euler equation:
+		\begin{equation}
+		\frac{1}{c_t } = \beta (r_{t+1} +1)  \frac{1}{c_{t+1} }
+		\end{equation}
+	
+	
+		Labour supply:
+		\begin{equation}
+		 \frac{\theta}{1-n_t} = \frac{ (1-\tau^w_t) w_t}{c_t}  
+		\end{equation}
+
+\section{Firms}
+
+	Problem:
+	\begin{equation}
+		\left\{
+		\begin{array}{l}
+		\pi_t =  \sum_t \beta^{t+1} \frac{f_t}{c_{t+1}   } \\
+		f_t = p_t \left[ c_t \right] - w_t n_t \\
+		y_t = k_t^{\alpha} (a_t n_t)^{1-\alpha} \\
+		i_t = k_{t+1} - (1-\delta) k_t \\
+		c_t + i_t = y_t
+		\end{array}
+		\right.
+	\end{equation}
+
+	Lagrangian:
+		\begin{equation}
+		\mathcal{L} =  \sum_t \beta^{t+1} \frac{   \left[ k_t^{\alpha} (a_t n_t)^{1-\alpha} - k_{t+1} + (1-\delta) k_t \right] - w_t n_t }{c_{t+1}   } \\
+		\end{equation}
+
+	Derivatives:
+		\begin{equation}
+		\mathcal{L}'_{n_t} \propto  \left(1-\alpha \right)    k_t^{\alpha} (a_t )^{1-\alpha} n_t^{-\alpha} - w_t
+		\end{equation}
+		
+		\begin{equation}
+		\mathcal{L}'_{k_{t+1}} = \frac{ - 1 }{c_{t+1}   } + \beta
+		\frac{    \left[ \alpha k_{t+1}^{\alpha-1} (a_{t+1} n_{t+1})^{1-\alpha}  + (1-\delta) \right]}{c_{t+2}  }
+		\end{equation}
+
+	FOC:
+
+		
+		\begin{equation}
+		\frac{1  }{c_{t+1}   } = \beta
+		\frac{    \left[ \alpha k_{t+1}^{\alpha-1} (a_{t+1} n_{t+1})^{1-\alpha}  + (1-\delta) \right]}{c_{t+2}  }
+		\end{equation}
+		
+		
+		Labour demand:
+		\begin{equation}
+		 \left(1-\alpha \right)    k_t^{\alpha} (a_t )^{1-\alpha} n_t^{-\alpha} = w_t
+		\end{equation}
+
+
+\section{Government}
+	Problem:
+	\begin{equation}
+		g_t = \tau^w_t w_t n_t + b_{t+1} - (r_t +1)b_t
+	\end{equation}
+	
+	\begin{equation}
+	\tau^w_t = \overline{\tau} + \varepsilon_t^{\tau^w_t}
+	\end{equation}
+
+\section{Shocks}
+	\begin{equation}
+	a_t = e^{z_t}
+	\end{equation}
+	
+	\begin{equation}
+	z_t = \rho z_{t-1} + \varepsilon^z_t
+	\end{equation}
+
+\section{Steady state}
+	$a_t = 1$
+
+	Euler:
+	\begin{equation}
+	r = \frac{1}{\beta} - 1
+	\end{equation}
+	
+	Labour market:
+	\begin{equation}
+	\left(1-\alpha \right)  k^{\alpha}  n^{-\alpha}  = \frac{c \theta}{(1-n)(1-\overline{\tau})}
+	\end{equation}	
+	
+	\begin{equation}
+	\phi_{SS} =  \frac{( \frac1{\beta}-1+\delta)}{\alpha}^{\left( \frac1{1-\alpha}\right)}
+	\end{equation}		
+	
+	\begin{equation}
+	\Omega_{SS} = 	\phi_{SS}^{(1-alpha)} - \delta
+	\end{equation}	
+	
+	\begin{equation}
+	\mu_{SS} = 	\frac{(1-\alpha)}{\theta (1-\overline{\tau})} \phi_{SS}^{(-alpha)}
+	\end{equation}
+	
+	\begin{equation}
+	k = \frac{\mu_{SS}}{\Omega_{SS} + \mu_{SS} \phi_{SS}}
+	\end{equation}
+	
+	\begin{equation}
+	c = \Omega_{SS}k
+	\end{equation}
+	
+	\begin{equation}
+	n =	\phi_{SS}  k
+	\end{equation}
+
+	
+
+\section{Dynare Code}
+
+	\begin{verbatim}
+	var c k n y w z tau i;
+	varexo e_tau e_a;
+	
+	parameters alpha beta theta delta tauHat rho r phiSS omegaSS muSS;
+	
+	model;
+	1/c = beta /c(+1) * (alpha * k^(alpha - 1) * 
+	exp((1-alpha)*z(+1)) * n(+1)^(1-alpha) + 1 - delta);
+	c * theta / ((1 - n)*(1- tau)) = (1-alpha) * 
+	k(-1)^(alpha) * exp((1-alpha)*z) * n^(-alpha);
+	c + i = y;
+	y = k(-1)^(alpha)*(exp(z)* n)^(1-alpha);
+	i = k-(1-delta)*k(-1);
+	z = rho * z(-1) + e_a;
+	tau = tauHat + e_tau;
+	w = (1-alpha) * k(-1)^(alpha) * (exp(z)*n)^(1-alpha);
+	end;
+	
+	alpha   = 0.4;
+	beta    = 0.99;
+	delta   = 0.02388;
+	theta     = 1.75;
+	tauHat = 0.13;
+	rho     = 0.95;
+	sigma   = (0.007/(1-alpha));
+	r = 1/0.99-1;
+	phiSS = ((1/beta-1+delta)/alpha)^(1/(1-alpha));
+	omegaSS = (phiSS)^(1-alpha)-delta;
+	muSS = (1-alpha)/(theta*(1-tauHat))*phiSS^(-alpha);
+	
+	initval;
+	k = muSS/(omegaSS + muSS * phiSS);
+	c = omegaSS * k;
+	n = phiSS * k;
+	z = 0;
+	e_tau = 0;
+	e_a = 0;
+	end;
+	steady;
+	
+	
+	shocks;
+	var e_a = sigma^2;
+	end;
+	
+	
+	check;
+	
+	stoch_simul(order = 1);
+	\end{verbatim}
+
+\end{document}
